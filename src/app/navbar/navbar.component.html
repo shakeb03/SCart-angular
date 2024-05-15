@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <ul>
+        <div *ngIf="user$ | async as user; else normalUser">
+            <div *ngIf="user.email == 'admin@scart.com'; else normalUser">
+                <li><a class="active" href="home">Home</a></li>
+            <!-- <li><a href="cart">Cart</a></li> -->
+            <li><a href="admindashboard">Admin Dashboard</a></li>
+            <li><a href="orders">Orders</a></li>
+            <li><a href="add-product">Add Product</a></li>
+            <li><a href="">placeholder 2</a></li>
+            </div>
+        </div>
+            <ng-template #normalUser>
+                <li><a class="active" href="home">Home</a></li>
+                <li><a href="cart">Cart</a></li>
+                <li><a href="dasboard">Dashboard</a></li>
+            </ng-template>
+        
+        <!-- <li style="float:right"><a href="signin">Sign In</a></li> -->
+        <div style="float: right;" *ngIf="user$ | async as user; else signInButton">
+            <p *ngIf="user; else signInButton">{{ user.email }}</p>
+            <button *ngIf="user" (click)="signOut()">Sign Out</button>
+        </div>
+        <ng-template #signInButton>
+            <button style="float: right;" (click)="signIn()">Sign In</button>
+        </ng-template>
+    </ul>
+
+</body>
+
+</html>

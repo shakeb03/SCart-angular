@@ -1,0 +1,21 @@
+<form [formGroup]="productForm" (ngSubmit)="updateProduct()">
+    <div>
+      <label>Product Name:</label>
+      <input formControlName="name" type="text">
+    </div>
+    <div>
+      <label>Price:</label>
+      <input formControlName="price" type="number">
+    </div>
+    <div>
+      <label>Description:</label>
+      <textarea formControlName="description"></textarea>
+    </div>
+    <div>
+      <label>Image URL:</label>
+      <input formControlName="imageURL" type="text">
+    </div>
+    <button type="submit" [disabled]="productForm.invalid">Update Product</button>
+    <button (click)="deleteProduct()">Delete Product</button>
+  </form>
+  
